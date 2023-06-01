@@ -71,7 +71,7 @@ export default function Header(props) {
         <Box sx={{ flexGrow: 0, mr: 2 }}>
           <Tooltip title="Open menu">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar alt="Vergel" src="/static/images/avatar/2.jpg" />
+              <Avatar alt="Vergel" />
             </IconButton>
           </Tooltip>
           <Menu
