@@ -8,7 +8,6 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
-import Switch from "@mui/material/Switch";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
@@ -131,7 +130,7 @@ export default function Home() {
 
   useEffect(() => {
     refreshArtists();
-  }, []);
+  }, [refreshArtists]);
 
   const [deleteArtist] = useMutation(DELETE_ARTIST, {
     refetchQueries: [{ query: GET_ARTISTS }],

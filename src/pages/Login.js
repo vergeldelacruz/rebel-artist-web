@@ -14,10 +14,10 @@ const Login = () => {
     setEmailError(false);
     setPasswordError(false);
 
-    if (email == "") {
+    if (email === "") {
       setEmailError(true);
     }
-    if (password == "") {
+    if (password === "") {
       setPasswordError(true);
     }
 
