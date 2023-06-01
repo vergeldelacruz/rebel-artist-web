@@ -10,7 +10,6 @@ export default function Profile() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(firstName, lastName, email, dateOfBirth, password);
   }
   return (
     <React.Fragment>
