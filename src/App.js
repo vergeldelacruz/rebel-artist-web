@@ -39,8 +39,8 @@ import CreateEditArtist from "./components/home/CreateEditArtist";
 // });
 
 const httpLink = new HttpLink({
-  //uri: config.httpLinkUrl,
-  uri:"https://rebel-artist-api.azurewebsites.net/graphql"
+  uri: config.httpLinkUrl,
+  //uri:"https://rebel-artist-api.azurewebsites.net/graphql"
 });
 
 // const wsLink = new WebSocketLink({

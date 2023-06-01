@@ -33,6 +33,7 @@ jobs:
           ###### End of Repository/Build Configurations ######
         env:
           CI : false
+          REACT_APP_HTTP_LINK_URL : "https://rebel-artist-api.azurewebsites.net/graphql"
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
