@@ -29,41 +29,43 @@ import ErrorPage from "./pages/ErrorPage";
 
 import CreateEditArtist from "./components/home/CreateEditArtist";
 
-const errorLink = onError(({ graphqlErrors, networkError }) => {
-  if (graphqlErrors) {
-    graphqlErrors.map(({ message, location, path }) => {
-      alert(`Graphql error ${message}`);
-      return `Graphql error ${message}`;
-    });
-  }
-});
+// const errorLink = onError(({ graphqlErrors, networkError }) => {
+//   if (graphqlErrors) {
+//     graphqlErrors.map(({ message, location, path }) => {
+//       alert(`Graphql error ${message}`);
+//       return `Graphql error ${message}`;
+//     });
+//   }
+// });
 
 const httpLink = new HttpLink({
-  uri: config.httpLinkUrl,
+  //uri: config.httpLinkUrl,
+  uri:"https://rebel-artist-api.azurewebsites.net/graphql"
 });
 
-const wsLink = new WebSocketLink({
-  uri: config.wsLinkUrl,
-  options: {
-    reconnect: true,
-  },
-});
+// const wsLink = new WebSocketLink({
+//   uri: config.wsLinkUrl,
+//   options: {
+//     reconnect: true,
+//   },
+// });
 
-const splitLink = split(
-  ({ query }) => {
-    const definition = getMainDefinition(query);
-    return (
-      definition.kind === "OperationDefinition" &&
-      definition.operation === "subscription"
-    );
-  },
-  wsLink,
-  httpLink
-);
+// const splitLink = split(
+//   ({ query }) => {
+//     const definition = getMainDefinition(query);
+//     return (
+//       definition.kind === "OperationDefinition" &&
+//       definition.operation === "subscription"
+//     );
+//   },
+//   wsLink,
+//   httpLink
+// );
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link: splitLink,
+  //link: splitLink,
+  link: httpLink,
 });
 
 const theme = createTheme({
