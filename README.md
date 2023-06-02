@@ -1,5 +1,5 @@
 # rebel-artist-web
-A SPA develop using React.
+A SPA develop using React and Apollo Client.
 This project consumes data from a GraphQL server.
 
 ## Quick Setup
