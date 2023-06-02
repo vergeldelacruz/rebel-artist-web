@@ -4,7 +4,7 @@ import { ResponsiveBar } from "@nivo/bar";
 export default function TopArtistBarChart({ data }) {
   let keys = ["Payout"];
   const commonProperties = {
-    margin: { top: 20, right: 80, bottom: 60, left: 80 },
+    margin: { top: 30, right: 80, bottom: 60, left: 80 },
     data: data,
     indexBy: "name",
     keys,
@@ -14,7 +14,7 @@ export default function TopArtistBarChart({ data }) {
     labelSkipHeight: 16,
   };
   return (
-    <div style={{ height: 400, maxWidth: 950 }}>
+    <div style={{ height: 320, maxWidth: 900 }}>
       <ResponsiveBar
         axisLeft={{
           format: ".2s",

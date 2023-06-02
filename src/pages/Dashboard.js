@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Paper,
-  Card,
-  CardContent,
-  Typography,
-} from "@mui/material";
+import { Paper, Card, CardContent, Typography } from "@mui/material";
 import TopArtistBarChart from "../components/dashboard/TopArtistBarChart";
 import { GET_TOP_ARTISTS } from "../graphql/Queries";
 import { useQuery } from "@apollo/client";
@@ -47,12 +42,14 @@ export default function Dashboard() {
           </Typography>
         </CardContent>
       </Card>
-      <Paper sx={{ marginTop: 1, padding: 1 }}>
-        <Typography variant="title" gutterBottom>
-          Top 10 Artists by Average Payout Amount
-        </Typography>
-        {!loading && artists && <TopArtistBarChart data={artists}></TopArtistBarChart>}
-      </Paper>
+      {!loading && artists && (
+        <Paper sx={{ marginTop: 1, padding: 1 }}>
+          <Typography variant="title" gutterBottom>
+            Top 10 Artists by Average Payout Amount
+          </Typography>
+          <TopArtistBarChart data={artists}></TopArtistBarChart>
+        </Paper>
+      )}
     </>
   );
 }
