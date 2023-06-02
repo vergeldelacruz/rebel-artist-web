@@ -13,7 +13,6 @@ import { useLazyQuery, useMutation } from "@apollo/client";
 import { CREATE_ARTIST, UPDATE_ARTIST } from "../../graphql/Mutations";
 import FeedBackSnackbar from "../common/FeedBackSnackbar";
 import Error from "../common/Error";
-import { selectedGridRowsCountSelector } from "@mui/x-data-grid";
 
 export default function CreateEditArtist() {
   const navigate = useNavigate();
@@ -88,11 +87,11 @@ export default function CreateEditArtist() {
   };
   useEffect(() => {
     if (data) {
-      if (data.artists.length === 1) {
-        setName(data.artists[0].name);
-        setRate(data.artists[0].rate);
-        setStreamCount(data.artists[0].streamCount);
-        setPaidStatus(data.artists[0].paidStatus);
+      if (data.artists.items.length === 1) {
+        setName(data.artists.items[0].name);
+        setRate(data.artists.items[0].rate);
+        setStreamCount(data.artists.items[0].streamCount);
+        setPaidStatus(data.artists.items[0].paidStatus);
       } else {
         setArtistNotFound(true);
       }
