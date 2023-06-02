@@ -13,6 +13,7 @@ import { useLazyQuery, useMutation } from "@apollo/client";
 import { CREATE_ARTIST, UPDATE_ARTIST } from "../../graphql/Mutations";
 import FeedBackSnackbar from "../common/FeedBackSnackbar";
 import Error from "../common/Error";
+import { selectedGridRowsCountSelector } from "@mui/x-data-grid";
 
 export default function CreateEditArtist() {
   const navigate = useNavigate();
@@ -27,6 +28,9 @@ export default function CreateEditArtist() {
   const [streamCount, setStreamCount] = useState("");
   const [paidStatus, setPaidStatus] = useState(false);
   const [formErrors, setFormErrors] = useState([]);
+  const [artistNotFound, setArtistNotFound] = useState(false);
+
+
   const [getArtist, { error, loading, data }] = useLazyQuery(GET_ARTIST, {
     fetchPolicy: "network-only",
   });
@@ -84,10 +88,14 @@ export default function CreateEditArtist() {
   };
   useEffect(() => {
     if (data) {
-      setName(data.artistById.name);
-      setRate(data.artistById.rate);
-      setStreamCount(data.artistById.streamCount);
-      setPaidStatus(data.artistById.paidStatus);
+      if (data.artists.length === 1) {
+        setName(data.artists[0].name);
+        setRate(data.artists[0].rate);
+        setStreamCount(data.artists[0].streamCount);
+        setPaidStatus(data.artists[0].paidStatus);
+      } else {
+        setArtistNotFound(true);
+      }
     }
   }, [data]);
 
@@ -98,6 +106,12 @@ export default function CreateEditArtist() {
       clearForm();
     }
   }, [artistId, getArtist]);
+
+  useEffect(() => {
+    if (error) {
+      navigate("/error")
+    }
+  }, [error,navigate]);
 
   const [updateArtist] = useMutation(UPDATE_ARTIST, {
     onCompleted: ({ updateArtist }) => {
@@ -133,8 +147,8 @@ export default function CreateEditArtist() {
 
   return (
     <>
-      {error && <Error message="Unable to find the artist"></Error>}
-      {!error && (
+      {artistNotFound && <Error message="Unable to find the artist !"></Error>}
+      {!loading && !error && (
         <>
           <FeedBackSnackbar
             openSnack={openSnack}
