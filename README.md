@@ -1,6 +1,5 @@
 # rebel-artist-web
-A SPA develop using React and Apollo Client.
-This project consumes data from a GraphQL server.
+A Single Page Application (SPA) develop using React & Apollo Client and consumes data from a GraphQL server.
 
 ## Quick Setup
 
