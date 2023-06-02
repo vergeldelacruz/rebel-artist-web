@@ -27,7 +27,6 @@ const httpLink = new HttpLink({
   uri: config.httpLinkUrl,
 });
 
-
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: httpLink,
@@ -39,7 +38,10 @@ const theme = createTheme({
       main: "#1D4ED8",
     },
     secondary: {
-      main: '#9c27b0',
+      main: "#9c27b0",
+    },
+    background: {
+      default: "#F5F5F5",
     },
   },
   components: {
@@ -100,7 +102,10 @@ function App() {
                   <Route path="/logout" element={<Logout />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/register" element={<Register />} />
-                  <Route path="/updateArtist/:artistId" element={<CreateEditArtist />} />
+                  <Route
+                    path="/updateArtist/:artistId"
+                    element={<CreateEditArtist />}
+                  />
                   <Route path="/createArtist" element={<CreateEditArtist />} />
                   <Route path="/error" element={<ErrorPage />} />
                 </Routes>

@@ -12,6 +12,8 @@ import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import Stack from "@mui/material/Stack";
+import Paper from "@mui/material/Paper";
+
 import { DELETE_ARTIST } from "../graphql/Mutations";
 import { useNavigate } from "react-router-dom";
 import ConfirmDialog from "../components/common/ConfirmDialog";
@@ -93,9 +95,12 @@ export default function Home() {
             >
               <EditIcon />
             </IconButton>
-            <IconButton sx={{
+            <IconButton
+              sx={{
                 "&:hover, &.Mui-focusVisible": { color: "#c62828" },
-              }} onClick={onDelete}>
+              }}
+              onClick={onDelete}
+            >
               <DeleteIcon />
             </IconButton>
           </Box>
@@ -121,7 +126,7 @@ export default function Home() {
 
   useEffect(() => {
     if (data) {
-      const filteredRows = data.artists.filter((row) => {
+      const filteredRows = data.artists.items.filter((row) => {
         return row.name.toLowerCase().includes(searchString.toLowerCase());
       });
       setArtists(filteredRows);
@@ -168,45 +173,52 @@ export default function Home() {
           onNo={(a) => setOpenConfirmDialog(false)}
           onYes={handleConfirmDelete}
         />
-        <Grid container alignItems="baseline" spacing={2}>
-          <Grid item md={6} xs={12} alignItems="center">
-            <Stack direction="row" spacing={1}>
-              <TextField
-                size="small"
-                onChange={(e) => setSearchString(e.target.value)}
-                autoFocus
-                fullWidth
-                value={searchString}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton size="large">
-                        <SearchIcon />
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-              />
-              <Button
-                size="small"
-                variant="outlined"
-                sx={{ minHeight: "40px" }}
-                onClick={(a) => setSearchString("")}
-              >
-                Clear
-              </Button>
-              <Button
-                size="small"
-                variant="contained"
-                sx={{ minHeight: "40px" }}
-                onClick={handleRefresh}
-              >
-                Refresh
-              </Button>
-            </Stack>
+        <Paper sx={{ mt: 1, p: 1 }}>
+          <Grid container alignItems="baseline" spacing={2}>
+            <Grid item md={6} xs={12} alignItems="center">
+              <Stack direction="row" spacing={1}>
+                <TextField
+                  size="small"
+                  onChange={(e) => setSearchString(e.target.value)}
+                  placeholder="Artist Name"
+                  autoFocus
+                  fullWidth
+                  value={searchString}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton size="large">
+                          <SearchIcon />
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+                <Button
+                  size="small"
+                  variant="outlined"
+                  sx={{ minHeight: "40px" }}
+                  onClick={(a) => setSearchString("")}
+                >
+                  Clear
+                </Button>
+                <Button
+                  size="small"
+                  variant="contained"
+                  sx={{ minHeight: "40px" }}
+                  onClick={handleRefresh}
+                >
+                  Refresh
+                </Button>
+              </Stack>
+            </Grid>
           </Grid>
+        </Paper>
+
+        <Grid container alignItems="baseline" spacing={2}  marginTop={0.1}>
           <Grid item xs={12}>
             <DataGrid
+              sx={{ backgroundColor: "white" }}
               rowHeight={42}
               headerHeight={42}
               dense={true}
