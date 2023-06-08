@@ -13,4 +13,4 @@ REACT_APP_HTTP_LINK_URL=http://localhost:5252/graphql
 Runs the app in development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view the web application in your browser.
 
-<img width="943" alt="rebel-artist-web" src="https://github.com/vergeldelacruz/rebel-artist-web/assets/47512855/bad9156e-3ffb-4fcc-b76d-25c8e2aea61f">
+![image](https://github.com/vergeldelacruz/rebel-artist-web/assets/47512855/3d1ba251-c86b-4d35-8394-24565bc6549b)
