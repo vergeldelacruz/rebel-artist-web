@@ -88,6 +88,7 @@ export default function Home() {
         return (
           <Box>
             <IconButton
+              id="editButton"
               sx={{
                 "&:hover, &.Mui-focusVisible": { color: "#9c27b0" },
               }}
@@ -96,6 +97,7 @@ export default function Home() {
               <EditIcon />
             </IconButton>
             <IconButton
+              id="deleteButton"
               sx={{
                 "&:hover, &.Mui-focusVisible": { color: "#c62828" },
               }}
@@ -179,6 +181,7 @@ export default function Home() {
               <Stack direction="row" spacing={1}>
                 <TextField
                   size="small"
+                  id="searchInput"
                   onChange={(e) => setSearchString(e.target.value)}
                   placeholder="Artist Name"
                   autoFocus
@@ -195,6 +198,7 @@ export default function Home() {
                   }}
                 />
                 <Button
+                  id="clearButton"
                   size="small"
                   variant="outlined"
                   sx={{ minHeight: "40px" }}
@@ -203,6 +207,7 @@ export default function Home() {
                   Clear
                 </Button>
                 <Button
+                  id="refreshButton"
                   size="small"
                   variant="contained"
                   sx={{ minHeight: "40px" }}
@@ -215,7 +220,7 @@ export default function Home() {
           </Grid>
         </Paper>
 
-        <Grid container alignItems="baseline" spacing={2}  marginTop={0.1}>
+        <Grid container alignItems="baseline" spacing={2} marginTop={0.1}>
           <Grid item xs={12}>
             <DataGrid
               sx={{ backgroundColor: "white" }}

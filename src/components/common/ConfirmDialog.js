@@ -6,19 +6,21 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import Alert from "@mui/material/Alert";
 
-export default function ConfirmDialog({ title,message,open, onYes,onNo}) {
-
+export default function ConfirmDialog({ title, message, open, onYes, onNo }) {
   return (
-    <Dialog open={open} onClose={onNo} aria-labelledby="form-dialog-title">
+    <Dialog
+      open={open}
+      onClose={onNo}
+      aria-labelledby="form-dialog-title"
+      id="confirmDialog"
+    >
       <DialogTitle id="form-dialog-title">{title}</DialogTitle>
       <DialogContent>
-        <Alert
-        severity="warning"
-        >{message}
-        </Alert>
+        <Alert severity="warning">{message}</Alert>
       </DialogContent>
       <DialogActions>
         <Button
+          id="noButton"
           variant="outlined"
           size="small"
           onClick={onNo}
@@ -27,6 +29,7 @@ export default function ConfirmDialog({ title,message,open, onYes,onNo}) {
           No
         </Button>
         <Button
+          id="yesButton"
           variant="outlined"
           size="small"
           onClick={onYes}

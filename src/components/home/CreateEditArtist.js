@@ -214,6 +214,7 @@ export default function CreateEditArtist() {
                         checked={paidStatus}
                         onChange={(e) => setPaidStatus(e.target.checked)}
                         name="active"
+                        id="active"
                         color="primary"
                       />
                     }
@@ -228,6 +229,7 @@ export default function CreateEditArtist() {
                     size="small"
                     onClick={onClose}
                     color="secondary"
+                    id="closeButton"
                     disabled={disabledButtons}
                   >
                     Cancel
@@ -237,6 +239,7 @@ export default function CreateEditArtist() {
                     size="small"
                     onClick={onSave}
                     color="secondary"
+                    id="saveButton"
                     disabled={disabledButtons}
                   >
                     Save
